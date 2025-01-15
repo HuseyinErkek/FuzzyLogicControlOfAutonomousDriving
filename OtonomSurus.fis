@@ -1,0 +1,129 @@
+[System]
+Name='OtonomSurus'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=2
+NumRules=60
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Distance'
+Range=[0 100]
+NumMFs=5
+MF1='Cok_Kisa':'trimf',[0 5 10]
+MF2='Kısa':'trimf',[5 17.5 30]
+MF3='Orta':'trimf',[20 40 60]
+MF4='Uzun':'trimf',[50 60 70]
+MF5='Cok_Uzun':'trimf',[70 85 100]
+
+[Input2]
+Name='SpeedDifference'
+Range=[-20 20]
+NumMFs=5
+MF1='Cok_Yavas':'gaussmf',[1.6 -15]
+MF2='Yavas':'gaussmf',[1.6 -10]
+MF3='Orta':'gaussmf',[1.6 0]
+MF4='Hizli':'gaussmf',[1.6 10]
+MF5='Cok_Hizli':'gaussmf',[1.6 15]
+
+[Input3]
+Name='TraficDensity'
+Range=[0 50]
+NumMFs=3
+MF1='Düsük':'trimf',[0 7.5 15]
+MF2='Orta':'trimf',[10 22.5 35]
+MF3='Yuksek':'trimf',[30 40 50]
+
+[Input4]
+Name='RoadSlope'
+Range=[-10 10]
+NumMFs=3
+MF1='Yokus_Asagi':'gaussmf',[1.4 -6]
+MF2='Duz':'gaussmf',[1 0]
+MF3='Yokus_Yukari':'gaussmf',[1.4 6]
+
+[Output1]
+Name='SpeedControl'
+Range=[0 150]
+NumMFs=5
+MF1='Cok_Yavas':'gaussmf',[5 15]
+MF2='Yavas':'gaussmf',[8 40]
+MF3='Hizli':'gaussmf',[8 75]
+MF4='Cok_Hizli':'gaussmf',[8 120]
+MF5='Orta':'gaussmf',[6 55]
+
+[Output2]
+Name='BrakeControl'
+Range=[0 100]
+NumMFs=4
+MF1='Cok_Hafif_Fren':'gaussmf',[3 10]
+MF2='Hafif_Fren':'gaussmf',[5 25]
+MF3='Orta_Derece_Fren':'gaussmf',[6.6 50]
+MF4='Tam_Fren':'gaussmf',[6.7 80]
+
+[Rules]
+1 1 1 1, 1 4 (1) : 2
+1 1 1 2, 1 4 (1) : 2
+1 1 1 3, 2 4 (1) : 2
+1 2 1 1, 1 2 (1) : 2
+1 2 1 2, 2 2 (1) : 2
+1 2 1 3, 5 2 (1) : 2
+1 3 2 1, 2 3 (1) : 2
+1 3 2 2, 5 3 (1) : 2
+1 3 2 3, 3 3 (1) : 2
+1 4 3 1, 3 4 (1) : 2
+1 4 3 2, 3 4 (1) : 2
+1 4 3 3, 4 4 (1) : 2
+2 1 1 1, 1 4 (1) : 2
+2 1 1 2, 1 4 (1) : 2
+2 1 1 3, 2 4 (1) : 2
+2 2 1 1, 1 2 (1) : 2
+2 2 1 2, 2 2 (1) : 2
+2 2 1 3, 5 2 (1) : 2
+2 3 2 1, 2 3 (1) : 2
+2 3 2 2, 5 3 (1) : 2
+2 3 2 3, 3 3 (1) : 2
+2 4 3 1, 3 4 (1) : 2
+2 4 3 2, 3 4 (1) : 2
+2 4 3 3, 4 4 (1) : 2
+3 1 1 1, 1 4 (1) : 2
+3 1 1 2, 1 4 (1) : 2
+3 1 1 3, 2 4 (1) : 2
+3 2 1 1, 1 2 (1) : 2
+3 2 1 2, 2 2 (1) : 2
+3 2 1 3, 5 2 (1) : 2
+3 3 2 1, 2 3 (1) : 2
+3 3 2 2, 5 3 (1) : 2
+3 3 2 3, 3 3 (1) : 2
+3 4 3 1, 3 4 (1) : 2
+3 4 3 2, 3 4 (1) : 2
+3 4 3 3, 4 4 (1) : 2
+4 1 1 1, 1 4 (1) : 2
+4 1 1 2, 1 4 (1) : 2
+4 1 1 3, 2 4 (1) : 2
+4 2 1 1, 1 2 (1) : 2
+4 2 1 2, 2 2 (1) : 2
+4 2 1 3, 5 2 (1) : 2
+4 3 2 1, 2 3 (1) : 2
+4 3 2 2, 5 3 (1) : 2
+4 3 2 3, 3 3 (1) : 2
+4 4 3 1, 3 4 (1) : 2
+4 4 3 2, 3 4 (1) : 2
+4 4 3 3, 4 4 (1) : 2
+5 1 1 1, 1 4 (1) : 2
+5 1 1 2, 1 4 (1) : 2
+5 1 1 3, 2 4 (1) : 2
+5 2 1 1, 1 2 (1) : 2
+5 2 1 2, 2 2 (1) : 2
+5 2 1 3, 5 2 (1) : 2
+5 3 2 1, 2 3 (1) : 2
+5 3 2 2, 5 3 (1) : 2
+5 3 2 3, 3 3 (1) : 2
+5 4 3 1, 3 4 (1) : 2
+5 4 3 2, 3 4 (1) : 2
+5 4 3 3, 4 4 (1) : 2
